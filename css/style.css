@@ -1,0 +1,188 @@
+/* comments */
+body{               
+    width: 80%;
+    margin: auto;       /* this will make the content to be in the center*/
+    min-width: 750px;
+    max-width: 2000px;
+    /* background-color: #BED8D4; */
+    /* background-color: rgb(197, 197, 236); */
+    background-color: #f7f7f7
+    /* font-family:'Courier New', Courier, monospace; */
+}
+
+#webSiteName{           /* use # to access id*/
+    border: 1px solid black;
+    padding: 25px 0px 20px 0px;
+    font-size: 50px;
+    margin: 0px;
+    text-align: center;
+
+}
+
+.nav_bar {
+    font-size: 30px;
+    text-align: left;
+    border: 1px solid black;
+    border-top: 0px;
+    /* background-color: blanchedalmond; */
+    padding: 10px 0px;
+    margin: 0px;
+
+}
+
+.nav_bar li{        /* use . to access classes*/
+    border: 1px solid blue;
+    /* font-size: 30px; */
+    list-style: none;   /* remove the dots from the list*/
+    display: inline;    /* to make the list horizontal*/
+    margin: 0px 50px;
+}
+
+.nav_bar li:hover{
+    background-color: rgb(91, 207, 236);
+}
+
+article {
+    font-size: 30px;
+    /* border: 1px solid black; */
+    margin: 50px 0px;
+}
+
+.form {
+    border: 1px solid black;
+    margin-bottom: 0px;
+}
+
+.form p, .form form{
+    margin: 20px;
+}
+
+.wrongInput {
+    color: darkred;
+}
+#scrambleInput {
+    /* border: 2px solid black; */
+    width: 50%;
+    height: 30px;
+    font-size: 20px;
+}
+
+#scrambleButton {
+    width: 10%;
+    height: 30px;
+    font-size: 20px;
+}
+#scrambleFormula {
+    cursor: pointer;
+}
+
+
+article button {
+    height: 50px;
+}
+
+/* .solutionText {
+    border: 1px solid black;
+} */
+
+/* --------------------------------------------------------------------------- */
+.cubes{
+    display: inline-block;
+    /* border: 1px solid yellow; */
+    width: 100%;
+    height: 410px;
+    padding-top: 0px;
+}
+.cube_form {
+    /* margin: auto; */
+    /* border: 1px solid black; */
+    width: 20%;
+    float: right;
+    margin-right: 15%;
+    height: 410px;
+
+}
+
+.lead_form {
+    /* margin: auto; */
+    width: 20%;
+    /* border: 1px solid black; */
+    float: left;
+    margin-left: 15%;
+    height: 410px;
+
+}
+
+.cube_form div, .lead_form div{
+    display: inline-block;
+    position: relative;
+    background-color: gainsboro;
+}
+
+.cube_form .cube_form0, .lead_form .lead_form0{
+    transform: translateX(0px) translateY(22.5px) translateY(0px) scaleX(1.228) scaleY(0.63) rotate(45deg);
+
+}
+/* 200 -90 -122 */
+.cube_form .cube_form1, .lead_form .lead_form1{
+    transform: translateX(-86.5px) translateY(-30px) scaleX(1) scaleY(0.9) rotate(30deg)  skewX(30deg) ;
+
+}
+
+.cube_form .cube_form2, .lead_form .lead_form2{
+    transform: translateX(86.5px) translateY(-230px) scaleX(1) scaleY(0.9) rotate(-30deg)  skewX(-30deg);
+
+}
+
+.cube, .lead{
+    margin: 5px;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    gap: 5px;
+    list-style-type: none;
+
+}
+
+.square, .help{
+    width: 60px;
+    height: 60px;
+    background-color: white;
+}
+
+/* ------------------------------------ */
+
+.control{
+    border: 1px solid black;
+    text-align: center;
+}
+
+.control div p{
+    border: 1px solid blue;
+    list-style: none;   /* remove the dots from the list*/
+    display: inline-block;
+    margin: 10px ;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.control div p:hover{
+    background-color: rgb(91, 207, 236);
+}
+
+.control div p:active{
+    background-color:  #f7f7f7;
+}
+
+
+/* ------------------------------------------ */
+
+.solution {
+    border: 1px solid black;
+}
+
+.solution p{
+    cursor: pointer;
+    margin: 20px;
+    text-align: center;
+}

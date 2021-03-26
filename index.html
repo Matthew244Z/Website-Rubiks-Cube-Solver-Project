@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- <meta charset="UTF-8" /> -->
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+
+    <title>Rubik's Cube Solver Part II</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <script type="module" src="js/script.js" defer></script>
+    <script type="module" src="js/rubiksCubeMovements.js" defer></script>
+    <script type="module" src="js/rubiksCubeUsefulFunctions.js" defer></script>
+    <script type="module" src="js/rubiksCubeSolver.js" defer></script>
+
+
+
+</head>
+
+<body>
+  <header>
+
+    <h1 id = "webSiteName" >Rubik's Cube Solver: Part II</h1>
+
+    <ul class = "nav_bar">
+      <li><a href = "index.html">Home</a></li>
+      <li><a href = "moves.html">Moves</a></li>
+      <li><a href = "about.html">About</a></li>
+    </ul>
+
+  </header>
+
+
+
+    <main>
+      <article class="form">
+        <p>This is a Rubik's Cube solver by layer.</p>
+        <p>Go to another rubik's cube webiste and copy the scramble formula.</p>
+        <form action="#" method="GET">
+          <label>Copy and past the scramble formula here:</label>
+          <p class="wrongInput"></p>
+          <input type="text" id="scrambleInput" name="scrambleFormula" placeholder="Scramble" data-cy="scrambleInput">
+          <input type="button" id="scrambleButton" value="Solve!" data-cy="scrambleButton" />
+          <!-- <button onclick="getValue()">Solve!</button> -->
+        </form>
+        <p id="scrambleFormula">Scramble Formula: </p>
+      </article>
+
+      <div class="cubes" data-cy="cubes">
+        <div class="lead_form">
+
+          <div class="lead_form0"> 
+            <ul class="lead side0">                 
+              <li class="help h00"></li>
+              <li class="help h01"></li>
+              <li class="help h02"></li>
+              <li class="help h07"></li>
+              <li class="help hcenter0"></li>
+              <li class="help h03"></li>
+              <li class="help h06"></li>
+              <li class="help h05"></li>
+              <li class="help h04"></li>
+            </ul>
+          </div>
+
+          <div class="lead_form1">
+            <ul class="lead side1">
+              <li class="help h10"></li>
+              <li class="help h11"></li>
+              <li class="help h12"></li>
+              <li class="help h17"></li>
+              <li class="help hcenter1"></li>
+              <li class="help h13"></li>
+              <li class="help h16"></li>
+              <li class="help h15"></li>
+              <li class="help h14"></li>
+            </ul>
+          </div>
+
+          <div  class="lead_form2">
+            <ul class="lead side2">
+              <li class="help h20"></li>
+              <li class="help h21"></li>
+              <li class="help h22"></li>
+              <li class="help h27"></li>
+              <li class="help hcenter2"></li>
+              <li class="help h23"></li>
+              <li class="help h26"></li>
+              <li class="help h25"></li>
+              <li class="help h24"></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cube_form">
+
+          <div class="cube_form0"> 
+            <ul class="cube side0">                 
+              <li class="square s00"></li>
+              <li class="square s01"></li>
+              <li class="square s02"></li>
+              <li class="square s07"></li>
+              <li class="square center0" data-cy="topCenter"></li>
+              <li class="square s03"></li>
+              <li class="square s06" data-cy="topPosition6"></li>
+              <li class="square s05"></li>
+              <li class="square s04"></li>
+            </ul>
+          </div>
+
+          <div class="cube_form1">
+            <ul class="cube side1">
+              <li class="square s10"></li>
+              <li class="square s11" data-cy="frontPosition1"></li>
+              <li class="square s12"></li>
+              <li class="square s17"></li>
+              <li class="square center1" data-cy="frontCenter"></li>
+              <li class="square s13"></li>
+              <li class="square s16"></li>
+              <li class="square s15"></li>
+              <li class="square s14"></li>
+            </ul>
+          </div>
+
+          <div  class="cube_form2">
+            <ul class="cube side2">
+              <li class="square s20"></li>
+              <li class="square s21"></li>
+              <li class="square s22"></li>
+              <li class="square s27"></li>
+              <li class="square center2"></li>
+              <li class="square s23"></li>
+              <li class="square s26"></li>
+              <li class="square s25"></li>
+              <li class="square s24"></li>
+            </ul>
+          </div>
+        </div>
+      
+      </div>
+
+      <article class="control">
+        <p class="formulaControl" data-cy="formulaControl">Scramble Cube First</p>
+
+        <div>
+          <p class="previousStep">Previous Step</p>
+          <p class="previousMove">Previous Move</p>
+          <p class="playPause">Play</p>
+          <p class="nextMove" data-cy="nextMove">Next Move</p>
+          <p class="nextStep">Next Step</p>
+        </div>
+      </article>
+
+      <article class="solution">
+        <p id="makeWhiteCross">1 - Make White Cross:</p>
+        <p id="orientWhiteCross">2 - Orient White Cross:</p>
+        <p id="makeWhiteCorners">3 - Make White Corners:</p>
+        <p id="makeSecondLayer">4 - Make Second Layer:</p>
+        <p id="makeYellowCross">5 - Make Yellow Cross:</p>
+        <p id="makeYellowCorners" >6 - Make Yellow Corners:</p>
+        <p id="orientYellowCorners" data-cy="startingPoint">7 - Orient Yellow Corners:</p>
+        <p id="orientYellowCross">8 - Orient Yellow Cross:</p>
+      </article>
+      
+      <p class="secretCube" data-cy="secretCube"></p>
+      <p class="secretCenter" data-cy="secretCenter"></p>
+    </main>
+
+
+</body>
+</html>
