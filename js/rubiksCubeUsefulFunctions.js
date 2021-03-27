@@ -463,10 +463,12 @@ const outputFormula = function(indexStep, indexMove)
     document.querySelector(".formulaControl").innerHTML = `${solutionObject.text} : ${solutionObject.formula.join(" ")}`
 
     solutionObject.formula[indexMove + solutionObject.skip] = temp;
-
-    colorCube(solutionObject.arrayCube[indexMove], solutionObject.arrayCenter[indexMove]);
-    animateCube(solutionObject.formula[indexMove + solutionObject.skip]);
-
+    
+    if(solutionObject.arrayCenter.length != 0)  // only color and animate cube if there is a move
+    {                                           // there might be times that a step is alredy done
+        colorCube(solutionObject.arrayCube[indexMove], solutionObject.arrayCenter[indexMove]);
+        animateCube(solutionObject.formula[indexMove + solutionObject.skip]);
+    }
 }
 
 // Previous move button
