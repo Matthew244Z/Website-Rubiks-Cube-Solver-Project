@@ -200,3 +200,9 @@ article button {
 .listMoves{
     font-size: 25px;
 }
+
+.movesBasicNotation{
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
