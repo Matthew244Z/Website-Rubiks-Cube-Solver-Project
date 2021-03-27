@@ -453,6 +453,7 @@ const outputFormula = function(indexStep, indexMove)
     let temp = "";
 
     console.log("This is indexStep: ", indexStep, " and this is indexMove: ", indexMove);
+    console.log("SumIndex: ", indexMove + solutionObject.skip);
     console.log("This is skip: ", solutionObject.skip);
     // if(solutionObject.formula[indexMove + solutionObject.skip] == "<br>")
     //     solutionObject.skip++;
@@ -477,11 +478,11 @@ const controlPreviousMove = function()
     if(moveIndex == -1 || moveIndex == -2)
     {
         stepIndex--;
-        // console.log("StepIndex = ", stepIndex);
         if(stepIndex >= 0)
         {
             moveIndex = chooseSolution(stepIndex).arrayCube.length - 1;
-            // console.log("This is the moveInde in controlPreviousMove: ", moveIndex);
+            // console.log("Move index start: ", moveIndex);
+            // console.log("Lenght of formula: ", chooseSolution(stepIndex).formula.length - 1);
         }
         else
         {
@@ -495,23 +496,27 @@ const controlPreviousMove = function()
     {
         let solutionObject = chooseSolution(stepIndex);
 
+        let skipTemp = solutionObject.skip;
+
+        console.log("SkitTemp: ", skipTemp);
         solutionObject.skip = 0;
 
-        for(let index = 0; index <= moveIndex; index++)
+        for(let index = 0; index < moveIndex + skipTemp; index++)
         {
-            if(solutionObject.formula[index] == "<br>")
+            if(solutionObject.formula[index + solutionObject.skip] == "<br>")
             {
+                console.log(solutionObject.formula[index + solutionObject.skip]);
+                console.log("Index for br: ", index + solutionObject.skip);
                 solutionObject.skip++;
-                console.log("Index for br: ", index);
             }
         }
 
         console.log("This is the piece: ", solutionObject.formula[moveIndex + solutionObject.skip]);
 
         if(solutionObject.formula[moveIndex + solutionObject.skip] == "<br>")
-        {
-            console.log("This is the br: ", solutionObject.formula[moveIndex + solutionObject.skip]);
+        {            
             solutionObject.skip--;
+            console.log("This is the br: ", solutionObject.formula[moveIndex + solutionObject.skip]);
         }
 
         console.log("This is the skipIndex on PreviousMove: ", solutionObject.skip);
