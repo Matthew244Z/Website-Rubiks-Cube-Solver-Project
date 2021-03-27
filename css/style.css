@@ -27,12 +27,10 @@ body{
     /* background-color: blanchedalmond; */
     padding: 10px 0px;
     margin: 0px;
-
 }
 
 .nav_bar li{        /* use . to access classes*/
     border: 1px solid blue;
-    /* font-size: 30px; */
     list-style: none;   /* remove the dots from the list*/
     display: inline;    /* to make the list horizontal*/
     margin: 0px 50px;
@@ -69,6 +67,11 @@ article {
 
 #scrambleButton {
     width: 10%;
+    height: 30px;
+    font-size: 20px;
+}
+
+#autoGenerate{
     height: 30px;
     font-size: 20px;
 }

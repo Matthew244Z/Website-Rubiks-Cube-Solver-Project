@@ -653,7 +653,8 @@ const printFormula = function(solutionObject)
 
 let initiateButtons = true;
 
-document.querySelector("#scrambleButton").addEventListener("click", function()
+
+const initiate = function()
 {
 
     document.querySelector(".formulaControl").innerHTML = `Start Solving`;
@@ -704,4 +705,8 @@ document.querySelector("#scrambleButton").addEventListener("click", function()
     initiateButtons = false;
     }
 
-});
+};
+
+document.querySelector("#scrambleButton").addEventListener("click", initiate);
+
+document.querySelector("#autoGenerate").addEventListener("click", initiate);

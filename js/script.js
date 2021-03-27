@@ -73,3 +73,67 @@ function getValue (){
     }
 }
 
+document.querySelector("#autoGenerate").addEventListener("click", autoGenerate);
+
+function autoGenerate (){
+
+    let size = 10;
+    let arrayStorage = [];
+    let side = "";
+    let moveOrientation = "";
+    let completeMove = "";
+    let nSide = -1;
+    let previousSide = -1;
+
+    resetSolution();        // reset storage if it has been used before
+
+    for(let index = 0; index < size; index++)
+    {
+        do  // ensure that I wont have the same move in a row
+        {
+            nSide = Math.floor(Math.random()*6);  // number between 0 and 5
+        }while(nSide == previousSide);
+
+        previousSide = nSide;
+
+        let nMove = Math.floor(Math.random()*3);  // number between 0 and 2
+
+        if(nSide == 0)
+            side = "U";
+        else if(nSide == 1)
+            side = "F";
+        else if(nSide == 2)
+            side = "R";
+        else if(nSide == 3)
+            side = "B";
+        else if(nSide == 4)
+            side = "L";
+        else if(nSide == 5)
+            side = "D";
+
+        if(nMove == 0)
+            moveOrientation = "";
+        else if(nMove == 1)
+            moveOrientation = "'";
+        else if(nMove == 2)
+            moveOrientation = "2";
+
+        completeMove = side + moveOrientation;
+
+        arrayStorage[index] = completeMove;
+
+    }
+
+    scramble(cube, cubeCenter, arrayStorage, cubeCopy, cubeCenterCopy);
+
+    makeWhiteCross(cube, cubeCenter);
+    orientWhiteCross(cube, cubeCenter);
+    makeWhiteCorners(cube, cubeCenter);
+    makeSecondLayer(cube, cubeCenter);
+    makeYellowCross(cube, cubeCenter);
+    makeYellowCorners(cube, cubeCenter);
+    orientYellowCorners(cube, cubeCenter);
+    orientYellowCross(cube, cubeCenter);
+    printFormulaSteps();
+
+}
