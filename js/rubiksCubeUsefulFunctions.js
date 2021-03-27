@@ -598,14 +598,22 @@ const controlNextStep = function ()
     if(stepIndex == 10)
         stepIndex = 9;
 
+    // let solutionObject = chooseSolution(stepIndex);
+
     if(stepIndex == 9)
     {
         document.querySelector(".formulaControl").innerHTML = `Cube is Done!`;
-        colorCube(cubeCopy, cubeCenterCopy);
+
+        let stepOrientYellowCross = 8;
+        let solutionObject = chooseSolution(stepOrientYellowCross);
+        let index = (solutionObject.arrayCenter.length) - 1;    // get the last index
+
+        colorCube(solutionObject.arrayCube[index], solutionObject.arrayCenter[index]);
     }
     else
     {
         let solutionObject = chooseSolution(stepIndex);
+
         solutionObject.skip = 0;
 
         if(solutionObject.formula[moveIndex + solutionObject.skip] == "<br>")
