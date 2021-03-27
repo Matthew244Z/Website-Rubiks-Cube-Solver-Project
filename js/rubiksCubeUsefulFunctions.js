@@ -474,12 +474,14 @@ const controlPreviousMove = function()
 {
     moveIndex--;
 
-    if(moveIndex == -1)
+    if(moveIndex == -1 || moveIndex == -2)
     {
         stepIndex--;
+        // console.log("StepIndex = ", stepIndex);
         if(stepIndex >= 0)
         {
             moveIndex = chooseSolution(stepIndex).arrayCube.length - 1;
+            // console.log("This is the moveInde in controlPreviousMove: ", moveIndex);
         }
         else
         {
@@ -638,39 +640,58 @@ const printFormula = function(solutionObject)
 }
 
 // initialize the controlling bar and steps
+
+let initiateButtons = true;
+
 document.querySelector("#scrambleButton").addEventListener("click", function()
 {
-    
-document.querySelector(".formulaControl").innerHTML = `Start Solving`;
 
-stepIndex = -1;
-moveIndex = -1;
-colorCube(cubeCopy, cubeCenterCopy);
+    document.querySelector(".formulaControl").innerHTML = `Start Solving`;
 
-document.querySelector("#scrambleFormula").addEventListener("click", function(){printFormula(scrambleStep); stepIndex = 0; moveIndex = -1;});
-document.querySelector("#makeWhiteCross").addEventListener("click", function(){printFormula(makeWhiteCrossStep); stepIndex = 1; moveIndex = -1;});
-document.querySelector("#orientWhiteCross").addEventListener("click", function(){printFormula(orientWhiteCrossStep); stepIndex = 2; moveIndex = -1;});
-document.querySelector("#makeWhiteCorners").addEventListener("click", function(){printFormula(makeWhiteCornersStep); stepIndex = 3; moveIndex = -1;});
-document.querySelector("#makeSecondLayer").addEventListener("click", function(){printFormula(makeSecondLayerStep); stepIndex = 4; moveIndex = -1;});
-document.querySelector("#makeYellowCross").addEventListener("click", function(){printFormula(makeYellowCrossStep); stepIndex = 5; moveIndex = -1;});
-document.querySelector("#makeYellowCorners").addEventListener("click", function(){printFormula(makeYellowCornersStep); stepIndex = 6; moveIndex = -1;});
-document.querySelector("#orientYellowCorners").addEventListener("click", function(){printFormula(orientYellowCornersStep); stepIndex = 7; moveIndex = -1;});
-document.querySelector("#orientYellowCross").addEventListener("click", function(){printFormula(orientYellowCrossStep); stepIndex = 8; moveIndex = -1;});
+    stepIndex = -1;
+    moveIndex = -1;
+    colorCube(cubeCopy, cubeCenterCopy);
 
-document.querySelector(".nextStep").addEventListener("click", function() {controlNextStep();});
-document.querySelector(".previousStep").addEventListener("click", function() {controlPreviousStep();});
-document.querySelector(".nextMove").addEventListener("click", function() {controlNextMove();});
-document.querySelector(".previousMove").addEventListener("click", function() {controlPreviousMove();});
-document.querySelector(".playPause").addEventListener("click", function() 
-{
-    if(play == 1)
-        document.querySelector(".playPause").innerHTML = `Play`;
-    else
-        document.querySelector(".playPause").innerHTML = `Pause`;
+    if(initiateButtons)
+    {
 
-    play = play*(-1); 
-    controlPlay();
-    console.log("play: ", play)
-});
+
+        document.querySelector("#scrambleFormula").addEventListener("click", function(){printFormula(scrambleStep);
+             stepIndex = 0; moveIndex = -1;});
+        document.querySelector("#makeWhiteCross").addEventListener("click", function(){printFormula(makeWhiteCrossStep);
+             stepIndex = 1; moveIndex = -1;});
+        document.querySelector("#orientWhiteCross").addEventListener("click", function(){printFormula(orientWhiteCrossStep);
+             stepIndex = 2; moveIndex = -1;});
+        document.querySelector("#makeWhiteCorners").addEventListener("click", function(){printFormula(makeWhiteCornersStep);
+             stepIndex = 3; moveIndex = -1;});
+        document.querySelector("#makeSecondLayer").addEventListener("click", function(){printFormula(makeSecondLayerStep);
+             stepIndex = 4; moveIndex = -1;});
+        document.querySelector("#makeYellowCross").addEventListener("click", function(){printFormula(makeYellowCrossStep);
+             stepIndex = 5; moveIndex = -1;});
+        document.querySelector("#makeYellowCorners").addEventListener("click", function(){printFormula(makeYellowCornersStep);
+             stepIndex = 6; moveIndex = -1;});
+        document.querySelector("#orientYellowCorners").addEventListener("click", function(){printFormula(orientYellowCornersStep);
+             stepIndex = 7; moveIndex = -1;});
+        document.querySelector("#orientYellowCross").addEventListener("click", function(){printFormula(orientYellowCrossStep);
+             stepIndex = 8; moveIndex = -1;});
+
+        document.querySelector(".nextStep").addEventListener("click", function() {controlNextStep();});
+        document.querySelector(".previousStep").addEventListener("click", function() {controlPreviousStep();});
+        document.querySelector(".nextMove").addEventListener("click", function() {controlNextMove();});
+        document.querySelector(".previousMove").addEventListener("click", function() {controlPreviousMove();});
+        document.querySelector(".playPause").addEventListener("click", function() 
+        {
+            if(play == 1)
+                document.querySelector(".playPause").innerHTML = `Play`;
+            else
+                document.querySelector(".playPause").innerHTML = `Pause`;
+
+            play = play*(-1); 
+            controlPlay();
+            console.log("play: ", play)
+        });
+
+    initiateButtons = false;
+    }
 
 });
