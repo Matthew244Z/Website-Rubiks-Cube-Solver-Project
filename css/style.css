@@ -10,6 +10,10 @@ body{
     /* font-family:'Courier New', Courier, monospace; */
 }
 
+p {
+    font-size: 25px;
+}
+
 #webSiteName{           /* use # to access id*/
     border: 1px solid black;
     padding: 25px 0px 20px 0px;
@@ -189,3 +193,7 @@ article button {
     margin: 20px;
     text-align: center;
 }
+
+/* ------------------------------------------------ */
+/* Moves Page CSS */
+
