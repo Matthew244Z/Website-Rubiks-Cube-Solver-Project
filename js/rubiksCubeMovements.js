@@ -451,6 +451,7 @@ export const moveMiddleReverse = function (array, arrayCenter, print, solutionOb
 
 export const scramble = function(array, arrayCenter, arrayScramble, arrayCopy, arrayCenterCopy)
 {
+    copyArray(arrayCopy, arrayCenterCopy, array, arrayCenter);
 
     for(let index = 0; index < arrayScramble.length; index++)
     {
