@@ -1063,6 +1063,7 @@ export const orientYellowCross = function(array, arrayCenter)
 {    
     // position of the right layer 
     let edgeSidePosition = findOneRightYellowEdge(array, arrayCenter); 
+    console.log("edgeSidePosition:",edgeSidePosition);
 
     if(edgeSidePosition == 0)  // there is no right yellow edge
     {
@@ -1071,6 +1072,7 @@ export const orientYellowCross = function(array, arrayCenter)
     }
 
     let rightCenter = sideIndex(array, arrayCenter, edgeSidePosition, POSITION_ONE);
+    console.log("rightCenter:", rightCenter);
 
     let moveUInt = 0;
     let repeat = true;
@@ -1088,21 +1090,18 @@ export const orientYellowCross = function(array, arrayCenter)
         moveUInt = PIECE_NUM;
 
     moveUInt = PIECE_NUM - moveUInt;
-
+    console.log("moveUInt:", moveUInt);
     // ensure the right edge is on its side
     adjustSide(array, arrayCenter, moveU, true, moveUInt, orientYellowCrossStep);
 
-    if(rightCenter != BEHIND)
-    {
-        rightCenter = ((rightCenter + 1) % 4) + 1;
-    }
 
     if(array[BEHIND][POSITION_ZERO] != array[BEHIND][POSITION_ONE] || array[FRONT][POSITION_ONE] != array[FRONT][POSITION_ZERO]) 
     {                                       // check if the front layer is right
         // move right side to the back
         if(rightCenter != BEHIND)   // check if right side is already in the back or not
         {
-            moveSideToFront(array, arrayCenter, rightCenter, true, orientYellowCrossStep);
+            let centerToGo = ((rightCenter + 1) % 4) + 1;   // find the oposite side of the right side
+            moveSideToFront(array, arrayCenter, centerToGo, true, orientYellowCrossStep);
         }
 
         if(array[FRONT][POSITION_ONE] == arrayCenter[RIGHT])
