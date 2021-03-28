@@ -39,14 +39,15 @@
         <p>The cube in the left shows the move you need to make.</p>
         <p>The cube in the right shows how your cube should be.</p>
         <p>Use the buttons to control the moves or click directly on the steps to see them.</p>
-        <p>Go to <a href="moves.html">moves</a> if you want to learn the terminologies (you don't need to).</p>
+        <p>Go to <a href="moves.html">moves</a> if you want to learn the terminologies (you don't need to). You only need 
+        to know that <b>2</b> means that you move the layer twice.</p>
         <br>
         <p>Go to another rubik's cube webiste and copy the scramble formula or use the 'Generate Scramble!' button.</p>
         <form action="#" method="GET">
           <label>Copy and past the scramble formula here:</label>
           <p class="wrongInput"></p>
-          <input type="text" id="scrambleInput" name="scrambleFormula" placeholder="Scramble" data-cy="scrambleInput">
-          <input type="button" id="scrambleButton" value="Solve!" data-cy="scrambleButton" />
+          <input type="text" id="scrambleInput" name="scrambleFormula" placeholder="Scramble">
+          <input type="button" id="scrambleButton" value="Solve!" />
           <br>
           <input type="button" id="autoGenerate" value="Generate Scramble!" />
           <!-- <button onclick="getValue()">Solve!</button> -->
@@ -54,7 +55,7 @@
         <p id="scrambleFormula">Scramble Formula: </p>
       </article>
 
-      <div class="cubes" data-cy="cubes">
+      <div class="cubes">
         <div class="lead_form">
 
           <div class="lead_form0"> 
@@ -108,9 +109,9 @@
               <li class="square s01"></li>
               <li class="square s02"></li>
               <li class="square s07"></li>
-              <li class="square center0" data-cy="topCenter"></li>
+              <li class="square center0"></li>
               <li class="square s03"></li>
-              <li class="square s06" data-cy="topPosition6"></li>
+              <li class="square s06"></li>
               <li class="square s05"></li>
               <li class="square s04"></li>
             </ul>
@@ -119,10 +120,10 @@
           <div class="cube_form1">
             <ul class="cube side1">
               <li class="square s10"></li>
-              <li class="square s11" data-cy="frontPosition1"></li>
+              <li class="square s11"></li>
               <li class="square s12"></li>
               <li class="square s17"></li>
-              <li class="square center1" data-cy="frontCenter"></li>
+              <li class="square center1"></li>
               <li class="square s13"></li>
               <li class="square s16"></li>
               <li class="square s15"></li>
@@ -148,13 +149,13 @@
       </div>
 
       <article class="control">
-        <p class="formulaControl" data-cy="formulaControl">Scramble Cube First</p>
+        <p class="formulaControl">Scramble Cube First</p>
 
         <div>
           <p class="previousStep">Previous Step</p>
           <p class="previousMove">Previous Move</p>
           <p class="playPause">Play</p>
-          <p class="nextMove" data-cy="nextMove">Next Move</p>
+          <p class="nextMove">Next Move</p>
           <p class="nextStep">Next Step</p>
         </div>
       </article>
@@ -166,12 +167,10 @@
         <p id="makeSecondLayer">4 - Make Second Layer:</p>
         <p id="makeYellowCross">5 - Make Yellow Cross:</p>
         <p id="makeYellowCorners" >6 - Make Yellow Corners:</p>
-        <p id="orientYellowCorners" data-cy="startingPoint">7 - Orient Yellow Corners:</p>
+        <p id="orientYellowCorners">7 - Orient Yellow Corners:</p>
         <p id="orientYellowCross">8 - Orient Yellow Cross:</p>
       </article>
       
-      <p class="secretCube" data-cy="secretCube"></p>
-      <p class="secretCenter" data-cy="secretCenter"></p>
     </main>
     <br>
     <br>
