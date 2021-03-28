@@ -34,15 +34,21 @@
 
     <main>
       <article class="form">
-        <p>This is a Rubik's Cube solver by layer.</p>
-        <p>Go to another rubik's cube webiste and copy the scramble formula.</p>
+        <p>This is a Rubik's Cube solver by layer. It tells you all the steps and moves are necessary to solve the cube.</p>
+        <br>
+        <p>The cube in the left shows the move you need to make.</p>
+        <p>The cube in the right shows how your cube should be.</p>
+        <p>Use the buttons to control the moves or click directly on the steps to see them.</p>
+        <p>Go to <a href="moves.html">moves</a> if you want to learn the terminologies (you don't need to).</p>
+        <br>
+        <p>Go to another rubik's cube webiste and copy the scramble formula or use the 'Generate Scramble!' button.</p>
         <form action="#" method="GET">
           <label>Copy and past the scramble formula here:</label>
           <p class="wrongInput"></p>
           <input type="text" id="scrambleInput" name="scrambleFormula" placeholder="Scramble" data-cy="scrambleInput">
           <input type="button" id="scrambleButton" value="Solve!" data-cy="scrambleButton" />
           <br>
-          <input type="button" id="autoGenerate" value="Auto Generate Scramble!" />
+          <input type="button" id="autoGenerate" value="Generate Scramble!" />
           <!-- <button onclick="getValue()">Solve!</button> -->
         </form>
         <p id="scrambleFormula">Scramble Formula: </p>
@@ -171,7 +177,7 @@
     <br>
     <br>
     <footer>
-      <p>This is a footer</p>
+      <p>Rubik's Cube Solver by Matthew Zhu</p>
     </footer>
 </body>
 </html>

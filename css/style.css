@@ -10,9 +10,9 @@ body{
     /* font-family:'Courier New', Courier, monospace; */
 }
 
-p {
+p, input, label, title, h1{
     font-size: 25px;
-    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #webSiteName{           /* use # to access id*/
