@@ -92,7 +92,7 @@ const whiteEdgeOnYellow = function(array, arrayCenter, nWhite)
 
 }
 
-const whiteEdgeOnSides = function(array, arrayCenter, nSide, nWhite,)
+const whiteEdgeOnSides = function(array, arrayCenter, nSide, nWhite)
 {
     moveSideToFront(array, arrayCenter, nSide, true, makeWhiteCrossStep);
     
