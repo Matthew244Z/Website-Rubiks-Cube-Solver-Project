@@ -1063,7 +1063,6 @@ export const orientYellowCross = function(array, arrayCenter)
 {    
     // position of the right layer 
     let edgeSidePosition = findOneRightYellowEdge(array, arrayCenter); 
-    console.log("edgeSidePosition:",edgeSidePosition);
 
     if(edgeSidePosition == 0)  // there is no right yellow edge
     {
@@ -1072,7 +1071,6 @@ export const orientYellowCross = function(array, arrayCenter)
     }
 
     let rightCenter = sideIndex(array, arrayCenter, edgeSidePosition, POSITION_ONE);
-    console.log("rightCenter:", rightCenter);
 
     let moveUInt = 0;
     let repeat = true;
@@ -1090,10 +1088,9 @@ export const orientYellowCross = function(array, arrayCenter)
         moveUInt = PIECE_NUM;
 
     moveUInt = PIECE_NUM - moveUInt;
-    console.log("moveUInt:", moveUInt);
+
     // ensure the right edge is on its side
     adjustSide(array, arrayCenter, moveU, true, moveUInt, orientYellowCrossStep);
-
 
     if(array[BEHIND][POSITION_ZERO] != array[BEHIND][POSITION_ONE] || array[FRONT][POSITION_ONE] != array[FRONT][POSITION_ZERO]) 
     {                                       // check if the front layer is right
@@ -1104,6 +1101,7 @@ export const orientYellowCross = function(array, arrayCenter)
             moveSideToFront(array, arrayCenter, centerToGo, true, orientYellowCrossStep);
         }
 
+        // check if the front is right or not. If it is right, then the whole cube is right.
         if(array[FRONT][POSITION_ONE] == arrayCenter[RIGHT])
         {
             moveYellowEdgesRight(array, arrayCenter);
