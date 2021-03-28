@@ -452,8 +452,6 @@ const outputFormula = function(indexStep, indexMove)
     let solutionObject = chooseSolution(indexStep);
     let temp = "";
 
-    console.log("indexStep:", indexStep, "   indexMove:", indexMove, "   skip:", solutionObject.skip, 
-        "   sumIndex:", indexMove + solutionObject.skip);
     // if(solutionObject.formula[indexMove + solutionObject.skip] == "<br>")
     //     solutionObject.skip++;
 
@@ -482,8 +480,6 @@ const controlPreviousMove = function()
         if(stepIndex >= 0)
         {
             moveIndex = chooseSolution(stepIndex).arrayCube.length - 1;
-            // console.log("Move index start: ", moveIndex);
-            // console.log("Lenght of formula: ", chooseSolution(stepIndex).formula.length - 1);
         }
         else
         {
@@ -503,20 +499,16 @@ const controlPreviousMove = function()
         {
             if(solutionObject.formula[index] == "<br>")
             {
-                // console.log(solutionObject.formula[index], 'at index', index);
                 solutionObject.skip++;
             }
         }
 
-        // console.log("This is the piece: ", solutionObject.formula[moveIndex + solutionObject.skip]);
 
         if(solutionObject.formula[moveIndex + solutionObject.skip] == "<br>")
         {            
             solutionObject.skip--;
-            // console.log("This is the real piece: ", solutionObject.formula[moveIndex + solutionObject.skip]);
         }
 
-        // console.log("This is the skipIndex on PreviousMove: ", solutionObject.skip);
 
         outputFormula(stepIndex, moveIndex);
     }
@@ -541,8 +533,6 @@ const controlNextMove = function()
 
     if(stepIndex == 10)
         stepIndex = 9;
-
-    console.log(stepIndex);
 
     if(stepIndex < 9)
     {
@@ -699,7 +689,6 @@ const initiate = function()
 
             play = play*(-1); 
             controlPlay();
-            console.log("play: ", play)
         });
 
     initiateButtons = false;
