@@ -86,7 +86,8 @@ function autoGenerate (){
     let previousSide = -1;
 
     resetSolution();        // reset storage if it has been used before
-
+    document.querySelector(".wrongInput").innerHTML = ``;
+    
     for(let index = 0; index < size; index++)
     {
         do  // ensure that I wont have the same move in a row
