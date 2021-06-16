@@ -28,14 +28,14 @@ const playerOnePlaying = function () {
 }
 
 
-const paintBoard = function (array) {
+// const paintBoard = function (array) {
 
-    for(let i = 0; i < BOARD_NUM; i++)
-    {
-        document.querySelector(".board" + i).style.backgroundColor = array[i];
-    }
+//     for(let i = 0; i < BOARD_NUM; i++)
+//     {
+//         document.querySelector(".board" + i).style.backgroundColor = array[i];
+//     }
 
-}
+// }
 
 const turnOn = function () {
     if (turn > MAX_TURN)
@@ -52,20 +52,31 @@ const changeColor = function () {
         turnColor = "blue"
 }
 const updateBoard = function (index) {
+    let errorMessage = document.querySelector(".error");
+
     // game is over, no more space 
     if(turnOn())
         return false;
 
+
     // if winner
 
-    if(boardColor[index] !== "white")
+
+    // check if the square is valid 
+    if(boardColor[index] != "white")
     {
-        document.querySelector(".error").innerHTML = `The selected square has already been filled. Select a different square.`
+        errorMessage.innerHTML = `The selected square has already been filled. Select a different square.`
         return false;
     }
+    else 
+        errorMessage.innerHTML = ``;
 
+    // update color on board
     document.querySelector(".board" + index).style.backgroundColor = turnColor;
-    
+
+    // update color on array, so it won't be used again
+    boardColor[index] = turnColor;
+
     turn++;
     changeColor();
 
@@ -78,7 +89,6 @@ status.innerHTML =`
     <p class="error"></p>
 `;
 createBoard();
-paintBoard(boardColor);
 
 // I tried to run this inside createBoard, but only the last item was working
 for(let i = 0; i < BOARD_NUM; i++)
