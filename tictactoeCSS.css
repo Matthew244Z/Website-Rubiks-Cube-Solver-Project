@@ -1,0 +1,19 @@
+.boardList {
+    /* border : 1px solid blue; */
+    margin: 5px;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    gap: 5px;
+    list-style-type: none;
+}
+
+.board li {
+    border : 1px solid black;
+}
+
+.boardSquare {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+}
