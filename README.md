@@ -1,3 +1,10 @@
+# TicTacToe Game for Tuq Interview Process
+
+The code can be check under the files 'tictactoe.html', 'tictactoeCSS.css', and 'tictactoeJS.js'.
+JavaScript was mainly used for this game.
+
+I decided to add the game on my website so it could be used without the need for me to host another website.
+
 # Rubiks-Cube-Solver-Project
 
 This is a website that can solve a Rubik's Cube. It was written with mainly JavaScript. 
