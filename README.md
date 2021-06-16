@@ -1,4 +1,4 @@
-#TicTacToe Game for Tuq Interview Process
+##TicTacToe Game for Tuq Interview Process
 
 The code can be check under the files 'tictactoe.html', 'tictactoeCSS.css', and 'tictactoeJS.js'.
 JavaScript was mainly used for this game.
