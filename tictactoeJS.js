@@ -2,10 +2,10 @@ const BOARD_NUM = 9;
 const boardColor = [];
 const MAX_TURN = 9;
 let turn = 1;
-let playerOneTurn = true;
 let turnColor = "yellow";
 
-
+// creates a list which is changed to a board using CSS
+// updates elements in the boardColor to be all white
 const createBoard = function () {
 
     document.querySelector(".board").innerHTML = `<ul class="boardList"></ul>`;
@@ -14,44 +14,37 @@ const createBoard = function () {
     {
         document.querySelector(".boardList").innerHTML += `<li class = "boardSquare board` +i+`"></li>`;
         boardColor[i] = "white";
-        // document.querySelector(".board" + i).addEventListener("click", () => {console.log("Clicked")})
     }
 }
 
-// const playerOnePlaying = function () {
-//     if (playerOneTurn)
-//         updateColor = "yellow";
-//     else 
-//         updateColor = "blue";
-
-//     playerOneTurn = !playerOneTurn;
-// }
-
-
-// const paintBoard = function (array) {
-
-//     for(let i = 0; i < BOARD_NUM; i++)
-//     {
-//         document.querySelector(".board" + i).style.backgroundColor = array[i];
-//     }
-
-// }
-
+// check if there is any more turn (maximum of 9 turns)
+// return true if there is more turn
+// return false if there is no more turn
 const turnOn = function () {
     if (turn > MAX_TURN)
         return false;
     return true;
 }
 
+// change color of the square according to the turn
+// odd turns are for player one; yellow
+// even turns are for player two; blue
 const changeColor = function () {
-    // player one = yellow
-    // player two = blue
+    let turnPlayer = document.querySelector(".turn");
     if (turn % 2 == 1)
+    {
         turnColor = "yellow";
+        turnPlayer.innerHTML = `Player 1 turn`;
+        // console.log("This is working!")
+    }
     else
+    {    
         turnColor = "blue"
+        turnPlayer.innerHTML = `Player 2 turn`;
+    }
 }
 
+// check if there is a winner
 const isWinner = function (array) {
     // 0 1 2
     // 3 4 5
@@ -87,58 +80,90 @@ const isWinner = function (array) {
         return true;
 }
 
+// this update the board with the colors
+// checks for winner and turns possible
+// checks for invalid inputs ()
+// update status, colors, and turns.
 const updateBoard = function (index) {
     let errorMessage = document.querySelector(".error");
     let playerTurn = document.querySelector(".player");
     
-    // game is over, no more space 
+    // check if ther is more turn 
     if(!turnOn())
         return false;
 
-
-
+    console.log(turn);
     // check if the square is valid 
     if(boardColor[index] != "white")
     {
         errorMessage.innerHTML = `The selected square has already been filled. Select a different square.`
         return false;
     }
-    else 
+    else // delete message on a right move
         errorMessage.innerHTML = ``;
 
+    // the square selected was valid
     // update color on board
-    document.querySelector(".board" + index).style.backgroundColor = turnColor;
-
     // update color on array, so it won't be used again
+
+    document.querySelector(".board" + index).style.backgroundColor = turnColor;
     boardColor[index] = turnColor;
 
-    // game is over, there is a winner
+    // check for winner
     if(isWinner(boardColor))
     {
-        playerTurn.innerHTML = `Player ` + ( (turn+1)%2 + 1 ) + ` won!`;
+        // output winner message
+        playerTurn.innerHTML = `<b>Player ` + ( (turn+1)%2 + 1 ) + ` is the winner!</b>`;
+        
+        // change turn so game stop
         turn = MAX_TURN;
+        return true;
     }
 
+    // no winner, game continues
     turn++;
     changeColor();
 
     return true;
 }
 
+
+// this is the status of the game
 let status = document.querySelector(".infoGame");
 status.innerHTML =`
-    <p>Info Game</p>
+    <p>Game Info</p>
+    <p>Player 1: Yellow</p>
+    <p>Player 2: Blue</p>
+    <p class="turn">Player 1 turn</p>
     <p class="player"></p>
     <p class="error"></p>
+    <button class="resetGame">Reset Game</button>
 `;
+
+// initialize board
 createBoard();
 
 // I tried to run this inside createBoard, but only the last item was working
+// addEventListener on all squares 
 for(let i = 0; i < BOARD_NUM; i++)
 {
     document.querySelector(".board" + i).addEventListener("click", () => {updateBoard(i)})
 }
 
-// document.querySelector(".board").innerHTML = "<p> Hello World! </p>";
-// addEventListener
-// removeEventListener
+
+// reset all variables and states
+const reset = function () {
+    turn = 1;
+    turnColor = "yellow";
+    createBoard();
+    document.querySelector(".player").innerHTML = ``;
+    document.querySelector(".error").innerHTML = ``;
+    for(let i = 0; i < BOARD_NUM; i++)
+    {
+        document.querySelector(".board" + i).addEventListener("click", () => {updateBoard(i)})
+    }
+
+
+}
+
+document.querySelector(".resetGame").addEventListener("click", () => {reset()} )
