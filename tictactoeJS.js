@@ -43,8 +43,22 @@ const turnOn = function () {
     
 }
 
-const changeColor = function (index) {
-    if(boardColor[index] != "white")
+const changeColor = function () {
+    // player one = yellow
+    // player two = blue
+    if (turn % 2 == 1)
+        turnColor = "yellow";
+    else
+        turnColor = "blue"
+}
+const updateBoard = function (index) {
+    // game is over, no more space 
+    if(turnOn())
+        return false;
+
+    // if winner
+
+    if(boardColor[index] !== "white")
     {
         document.querySelector(".error").innerHTML = `The selected square has already been filled. Select a different square.`
         return false;
@@ -52,6 +66,9 @@ const changeColor = function (index) {
 
     document.querySelector(".board" + index).style.backgroundColor = turnColor;
     
+    turn++;
+    changeColor();
+
     return true;
 }
 
@@ -66,7 +83,7 @@ paintBoard(boardColor);
 // I tried to run this inside createBoard, but only the last item was working
 for(let i = 0; i < BOARD_NUM; i++)
 {
-    document.querySelector(".board" + i).addEventListener("click", () => {changeColor(i)})
+    document.querySelector(".board" + i).addEventListener("click", () => {updateBoard(i)})
 }
 
 // document.querySelector(".board").innerHTML = "<p> Hello World! </p>";
