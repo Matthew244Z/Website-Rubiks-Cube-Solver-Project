@@ -3,6 +3,7 @@ const boardColor = [];
 const MAX_TURN = 9;
 let turn = 1;
 let turnColor = "yellow";
+let haveWinner = false;
 
 // creates a list which is changed to a board using CSS
 // updates elements in the boardColor to be all white
@@ -78,6 +79,21 @@ const isWinner = function (array) {
     // check for diagonal 2 4 6
     if (array[2] == array[4] && array[2] == array[6] && array[2] != "white")
         return true;
+
+    return false;
+}
+
+
+// check for tie
+// board needs to be full
+const isTie = function (winner) {
+    if(!turnOn())
+    {
+        if(!winner)
+            document.querySelector(".error").innerHTML = `<b>Tie! No Winner!</b>`;
+        return true;
+    }
+    return false
 }
 
 // this update the board with the colors
@@ -110,7 +126,9 @@ const updateBoard = function (index) {
     boardColor[index] = turnColor;
 
     // check for winner
-    if(isWinner(boardColor))
+    haveWinner = isWinner(boardColor);
+
+    if(haveWinner)
     {
         // output winner message
         playerTurn.innerHTML = `<b>Player ` + ( (turn+1)%2 + 1 ) + ` is the winner!</b>`;
@@ -123,6 +141,11 @@ const updateBoard = function (index) {
     // no winner, game continues
     turn++;
     changeColor();
+
+    // check for tie after turn increment
+    // board full, no more entries, tie game
+    // tie message should be outputed right after board is full
+    isTie();
 
     return true;
 }
@@ -155,6 +178,7 @@ for(let i = 0; i < BOARD_NUM; i++)
 const reset = function () {
     turn = 1;
     turnColor = "yellow";
+    haveWinner = false;
     createBoard();
     document.querySelector(".player").innerHTML = ``;
     document.querySelector(".error").innerHTML = ``;
