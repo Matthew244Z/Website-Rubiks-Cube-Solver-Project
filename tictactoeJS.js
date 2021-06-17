@@ -36,7 +36,6 @@ const changeColor = function () {
     {
         turnColor = "yellow";
         turnPlayer.innerHTML = `Player 1 turn`;
-        // console.log("This is working!")
     }
     else
     {    
@@ -108,7 +107,6 @@ const updateBoard = function (index) {
     if(!turnOn())
         return false;
 
-    console.log(turn);
     // check if the square is valid 
     if(boardColor[index] != "white")
     {
@@ -135,7 +133,6 @@ const updateBoard = function (index) {
         
         // change turn so game stop
         turn = MAX_TURN;
-        return true;
     }
 
     // no winner, game continues
@@ -145,7 +142,7 @@ const updateBoard = function (index) {
     // check for tie after turn increment
     // board full, no more entries, tie game
     // tie message should be outputed right after board is full
-    isTie();
+    isTie(haveWinner);
 
     return true;
 }
